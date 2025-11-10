@@ -1,0 +1,71 @@
+package com.sismografo.model;
+
+import lombok.*;
+import java.time.LocalDateTime;
+import jakarta.persistence.*;
+import java.math.BigDecimal;
+import java.util.Set;
+
+@Entity
+@Table(name = "evento_sismico")
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
+public class EventoSismico {
+    
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @JoinColumn(name = "fecha_hora_fin")
+    private LocalDateTime fechaHoraFin;
+
+    @JoinColumn(name = "fecha_hora_ocurrencia")
+    private LocalDateTime fechaHoraOcurrencia;
+
+    @JoinColumn(name = "latitud_epicentro")
+    private BigDecimal latitudEpicentro;
+
+    @JoinColumn(name = "longitud_epicentro")
+    private BigDecimal longitudEpicentro;
+
+    @JoinColumn(name = "latitud_hipocentro")
+    private BigDecimal latitudHipocentro;
+
+    @JoinColumn(name = "longitud_hipocentro")
+    private BigDecimal longitudHipocentro;
+
+    @JoinColumn(name = "valor_magnitud")
+    private int valorMagnitud;
+
+    private int magnitud;
+
+    @JoinColumn(name = "fecha_hora_revision")
+    private LocalDateTime fechaHoraRevision;
+    
+    @ManyToOne
+    @JoinColumn(name = "serie_temporal", referencedColumnName = "id")
+    private SerieTemporal serieTemporal;
+
+    @ManyToOne
+    @JoinColumn(name = "clasificacion_sismo", referencedColumnName = "id")
+    private ClasificacionSismo clasificacionSismo;
+
+    @ManyToOne
+    @JoinColumn(name = "alcance_sismico", referencedColumnName = "id")
+    private AlcanceSismico alcanceSismico;
+
+    @ManyToOne
+    @JoinColumn(name = "origen_generacion", referencedColumnName = "id")
+    private OrigenGeneracion origenGeneracion;
+
+    @OneToMany
+    @JoinColumn(name = "cambio_estado", referencedColumnName = "id")
+    private Set<CambioEstado> cambioEstado;
+
+    @ManyToOne
+    @JoinColumn(name = "estado_actual", referencedColumnName = "id")
+    private Estado estadoActual;
+    
+}
