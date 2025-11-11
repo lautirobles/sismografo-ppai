@@ -13,32 +13,18 @@ import com.sismografo.model.EventoSismico;
 import com.sismografo.model.GestorRevision;
 import com.sismografo.repositories.EventoSismicoRepository;
 
-<<<<<<< HEAD
-import org.springframework.stereotype.Service;
-
-@Service
-=======
 import lombok.RequiredArgsConstructor;
 
 
 @Service
 @RequiredArgsConstructor
->>>>>>> 3e3eb5c8a667455e5df60fba8d31c8be66e1aca5
 public class GestorRevisionService {
     
     private final EventoSismicoRepository eventoSismicoRepository;
     private final EventoSismicoMapper mapper;
     private final GestorRevision gestor;
 
-<<<<<<< HEAD
-    public GestorRevisionService(EventoSismicoRepository eventoSismicoRepository){
-        this.eventoSismicoRepository = eventoSismicoRepository;
-        this.mapper = new EventoSismicoMapper();
-        this.gestor = new GestorRevision();
-    }
-=======
     
->>>>>>> 3e3eb5c8a667455e5df60fba8d31c8be66e1aca5
 
     // CREO que hay que guardar los eventos en el atributo eventos del gestor, no se si hace falta ahora que estamos sacando los datos de la base
 
