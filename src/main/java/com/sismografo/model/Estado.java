@@ -73,7 +73,7 @@ public abstract class Estado {
     }
 
     public boolean esAutoDetectado(){
-        return false;
+        return this.nombre == "AutoDetectado";
     }
     
 }
