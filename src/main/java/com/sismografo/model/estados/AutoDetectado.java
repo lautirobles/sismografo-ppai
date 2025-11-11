@@ -1,8 +1,6 @@
 package com.sismografo.model.estados;
 
 import java.time.LocalDateTime;
-import java.util.List;
-import java.util.stream.Collectors;
 
 import com.sismografo.model.CambioEstado;
 import com.sismografo.model.Estado;
@@ -37,4 +35,6 @@ public class AutoDetectado extends Estado {
     public void crearCE(LocalDateTime fechaHoraInicio, Estado estado){
         new CambioEstado(fechaHoraInicio, estado);
     }
+
+    
 }

@@ -9,7 +9,7 @@ import com.sismografo.dto.EventoSismicoDto;
 import com.sismografo.mapper.EventoSismicoMapper; 
 import com.sismografo.model.EventoSismico;
 import com.sismografo.model.GestorRevision;
-import com.sismografo.repository.EventoSismicoRepositoryImpl;
+import com.sismografo.repositories.EventoSismicoRepositoryImpl;
 
 public class GestorRevisionService {
     
