@@ -35,6 +35,6 @@ public class AutoDetectado extends Estado {
     }
 
     public void crearCE(LocalDateTime fechaHoraInicio, Estado estado){
-        new CambioEstado(fechaHoraInicio, );
+        new CambioEstado(fechaHoraInicio, estado);
     }
 }

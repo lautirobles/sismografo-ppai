@@ -9,6 +9,8 @@ import java.time.LocalDateTime;
 @Entity
 @Table(name = "estado")
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
 public abstract class Estado {
 
     @Id
