@@ -4,10 +4,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class PpaiTerceraEntregaApplication {
+public class SismografoApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(PpaiTerceraEntregaApplication.class, args);
+		SpringApplication.run(SismografoApplication.class, args);
 	}
 
 }
