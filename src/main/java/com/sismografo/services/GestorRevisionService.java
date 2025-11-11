@@ -11,6 +11,9 @@ import com.sismografo.model.EventoSismico;
 import com.sismografo.model.GestorRevision;
 import com.sismografo.repositories.EventoSismicoRepositoryImpl;
 
+import org.springframework.stereotype.Service;
+
+@Service
 public class GestorRevisionService {
     
     private final EventoSismicoRepositoryImpl eventoSismicoRepository;
