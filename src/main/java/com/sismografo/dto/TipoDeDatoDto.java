@@ -8,7 +8,6 @@ import lombok.*;
 @NoArgsConstructor
 @Builder
 public class TipoDeDatoDto {
-    private Long id;
     private String denominacion;
     private String unidadMedida;
     private BigDecimal valorUmbral;

@@ -1,18 +1,14 @@
 package com.sismografo.dto;
 
-import java.math.BigDecimal;
 import lombok.*;
+import java.math.BigDecimal;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
 public class DetalleMuestraSismicaDto {
-
-    private Long id;
     private BigDecimal valor;
-    private Long idTipoDeDato;       
-    private String unidadMedida;    
-    private BigDecimal valorUmbral;  
-    private Long idMuestraSismica;   
+    private String denominacion;  
 }
+
