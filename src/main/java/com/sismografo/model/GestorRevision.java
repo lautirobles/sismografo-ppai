@@ -20,7 +20,7 @@ public class GestorRevision {
 
     private List<EventoSismico> eventos;
 
-    private EventoSismicoDto eventoSelec;
+    private EventoSismico eventoSelec;
 
     private LocalDateTime fechaHoraActual;
 
@@ -44,7 +44,16 @@ public class GestorRevision {
         this.sismografos = sismografos;
     }
 
-  public LocalDateTime obtenerFechaYHoraActual(){
-    return LocalDateTime.now();
+  public void bloquearEvSismico(){
+    eventoSelec.bloquearEvSismico(this.fechaHoraActual);
+    System.out.println("Evento bloqueado en estado: " );
+    
   }
+
+  public void obtenerFechaYHoraActual(){
+    this.fechaHoraActual = LocalDateTime.now();
+  }
+
+
+  
 }

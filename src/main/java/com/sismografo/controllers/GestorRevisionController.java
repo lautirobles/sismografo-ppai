@@ -4,11 +4,14 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.sismografo.services.GestorRevisionService;
 import com.sismografo.dto.EventoSismicoDto;
+import org.springframework.web.bind.annotation.PathVariable;
+
 
 import java.util.List;
 
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @CrossOrigin(origins = "*")
@@ -24,10 +27,14 @@ public class GestorRevisionController {
 
 
     // paso 6: el gestor busca todos los eventos no revisados, el front envia la request a /gestor-revision
-    @GetMapping("auto-detectados")
+    @GetMapping("/auto-detectados")
     public List<EventoSismicoDto> buscarEventosNoRevisados(){
         return gestorRevisionService.buscarEventosNoRevisados();
     }
 
+    @PostMapping("/bloquear-evento/{idEvento}")
+    public void bloquearEvento(@PathVariable Long idEvento){
+        gestorRevisionService.bloquearEvento(idEvento);
+    }
 
 }

@@ -46,23 +46,17 @@ public class GestorRevisionService {
             .collect(Collectors.toList());
     }
 
-    // aca falta ver como hacemos para traer los datos del front, de cual evento se selecciona !!!
-
-    // CREO que falta cargar el evento seleccionado como atributo para la entidad del gestor
-    // funcion que bloquea el evento que se selecciona
-    public void bloquearEvento(){
-        EventoSismicoDto eventoDto = gestor.getEventoSelec();
-
-        LocalDateTime fechaHoraActual = LocalDateTime.now();
-        gestor.setFechaHoraActual(fechaHoraActual);
-
-        // recuperamos la entidad desde el DTO
-        EventoSismico eventoSelec = eventoSismicoRepository.findById(eventoDto.getId())
+    
+    public void bloquearEvento(Long idEvento){
+        EventoSismico eventoSelec = eventoSismicoRepository.findById(idEvento)
             .orElseThrow(() -> new RuntimeException("Evento no encontrado"));
-
-        // llamamos al evento para que delegue en el estado (no se si hacerlo en la clase o el service)
-        eventoSelec.bloquearEvSismico(fechaHoraActual);
+        gestor.setEventoSelec(eventoSelec);
+        gestor.setEventoSelec(eventoSelec);
+        gestor.obtenerFechaYHoraActual();
+        gestor.bloquearEvSismico();
 
     }
+
+    
 
 }
