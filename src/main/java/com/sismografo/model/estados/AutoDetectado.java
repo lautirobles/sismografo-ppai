@@ -16,12 +16,21 @@ public class AutoDetectado extends Estado {
     }
 
     public void bloquearEvento(EventoSismico evento, LocalDateTime fechaHoraFin){
-        buscarCEActual(evento);
+        CambioEstado ceActual = buscarCEActual(evento);
+        ceActual.setFechaHoraFin(fechaHoraFin);
+
+        crearCE();
+
     }
 
     public CambioEstado buscarCEActual(EventoSismico evento){
         return evento.getCambioEstado().stream()
             .filter(c -> c.sosActual())
-            
+            .findFirst()
+            .orElse(null);
+    }
+
+    public void crearCE(){
+        new CambioEstado(LocalDateTime fechaHoraInicio);
     }
 }
