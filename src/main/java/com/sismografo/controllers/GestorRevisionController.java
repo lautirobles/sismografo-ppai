@@ -7,10 +7,11 @@ import com.sismografo.dto.EventoSismicoDto;
 
 import java.util.List;
 
-
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/gestor-revision")
 public class GestorRevisionController {
