@@ -23,7 +23,7 @@ public class GestorRevisionController {
 
 
     // paso 6: el gestor busca todos los eventos no revisados, el front envia la request a /gestor-revision
-    @GetMapping
+    @GetMapping("auto-detectados")
     public List<EventoSismicoDto> buscarEventosNoRevisados(){
         return gestorRevisionService.buscarEventosNoRevisados();
     }
