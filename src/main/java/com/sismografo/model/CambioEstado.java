@@ -4,7 +4,6 @@ import jakarta.persistence.*;
 import lombok.*;
 import java.time.LocalDateTime;
 
-import org.yaml.snakeyaml.events.Event;
 
 @Entity
 @Table(name = "cambio_estado")
@@ -23,6 +22,7 @@ public class CambioEstado {
     private LocalDateTime fechaHoraFin;
 
     // Relación Many-to-One con EventoSismico
+
     // @ManyToOne(fetch = FetchType.LAZY)
     // @JoinColumn(name = "evento_sismico_id", nullable = false)
     // private EventoSismico eventoSismico;
@@ -33,7 +33,8 @@ public class CambioEstado {
     private Estado estado;
 
     public CambioEstado(LocalDateTime fechaHoraInicio, Estado estado){
-
+        this.fechaHoraInicio = fechaHoraInicio;
+        this.estado = estado;
     }
 
     public boolean sosActual(){

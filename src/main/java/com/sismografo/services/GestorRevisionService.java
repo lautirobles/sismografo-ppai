@@ -16,13 +16,11 @@ public class GestorRevisionService {
     private final EventoSismicoRepositoryImpl eventoSismicoRepository;
     private final EventoSismicoMapper mapper;
     private final GestorRevision gestor;
-    // private final EventoSismicoService eventoSismicoService;
 
-    public GestorRevisionService(EventoSismicoRepositoryImpl eventoSismicoRepository, EventoSismicoService eventoSismicoService){
+    public GestorRevisionService(EventoSismicoRepositoryImpl eventoSismicoRepository){
         this.eventoSismicoRepository = eventoSismicoRepository;
         this.mapper = new EventoSismicoMapper();
         this.gestor = new GestorRevision();
-        this.eventoSismicoService = eventoSismicoService;
     }
 
     // CREO que hay que guardar los eventos en el atributo eventos del gestor, no se si hace falta ahora que estamos sacando los datos de la base
