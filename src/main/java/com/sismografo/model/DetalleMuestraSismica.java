@@ -4,6 +4,8 @@ import lombok.*;
 
 
 import java.math.BigDecimal;
+import java.util.HashMap;
+import java.util.Map;
 
 import jakarta.persistence.*;
 @Data
@@ -27,6 +29,14 @@ public class DetalleMuestraSismica {
     @ManyToOne
     @JoinColumn(name = "muestra_sismica", referencedColumnName = "id")
     private MuestraSismica muestraSismica;
+
+
+    public Map<String, Object> getDatos() {
+        Map<String, Object> datos = new HashMap<>();
+        datos.put("valor", valor);
+        datos.put("denominacion", tipoDeDato.getDenominacion());
+        return datos;
+    }
 
     
 }

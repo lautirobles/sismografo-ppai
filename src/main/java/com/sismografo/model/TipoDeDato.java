@@ -26,5 +26,8 @@ public class TipoDeDato {
 
     @Column(name = "valor_umbral")
     private BigDecimal  valorUmbral;
+
     
+
+   
 }
