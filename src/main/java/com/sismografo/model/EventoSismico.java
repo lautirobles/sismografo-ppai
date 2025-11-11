@@ -69,11 +69,14 @@ public class EventoSismico {
     private Estado estadoActual;
     
 
+    public void agregarCambioEstado(CambioEstado nuevoCE){
+        this.cambioEstado.add(nuevoCE);
+    }
+
     public boolean esAutoDetectado(){
         return this.estadoActual.esAutoDetectado();
     }
 
-    // No se si va aca o en services
 
     public void bloquearEvSismico(LocalDateTime fechaHoraActual){
         this.estadoActual.bloquearEvento(this, fechaHoraActual);

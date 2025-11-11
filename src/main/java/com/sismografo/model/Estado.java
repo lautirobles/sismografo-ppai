@@ -67,5 +67,9 @@ public abstract class Estado {
     public boolean esAutoDetectado(){
         return false;
     }
+
+    public CambioEstado crearCE(LocalDateTime fechaHoraInicio, Estado estado){
+        return new CambioEstado(fechaHoraInicio, estado);
+    }
     
 }
