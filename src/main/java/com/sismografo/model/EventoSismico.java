@@ -37,7 +37,7 @@ public class EventoSismico {
     private BigDecimal longitudHipocentro;
 
     @JoinColumn(name = "valor_magnitud")
-    private int valorMagnitud;
+    private float valorMagnitud;
 
     private int magnitud;
 
@@ -68,4 +68,8 @@ public class EventoSismico {
     @JoinColumn(name = "estado_actual", referencedColumnName = "id")
     private Estado estadoActual;
     
+
+    public boolean esAutoDetectado(){
+        return this.estadoActual.esAutoDetectado();
+    }
 }

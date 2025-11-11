@@ -69,5 +69,8 @@ public abstract class Estado {
         System.out.println("Evento con cierre de ventana temporal en el estado: " + this.nombre);
     }
 
+    public boolean esAutoDetectado(){
+        return false;
+    }
     
 }

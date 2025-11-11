@@ -4,4 +4,8 @@ import com.sismografo.model.Estado;
 
 public class AutoDetectado extends Estado {
     
+
+    public boolean esAutoDetectado(){
+        return true;
+    }
 }
