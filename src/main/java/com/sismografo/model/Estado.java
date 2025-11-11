@@ -9,7 +9,7 @@ import java.util.Set;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Estado {
+public abstract class Estado {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,11 +21,10 @@ public class Estado {
     private Boolean esAutoDetectado;
     private Boolean esAltaDefinitiva;
 
-    // Relación One-to-Many con CambioEstado (como estado actual)
+   
     @OneToMany(mappedBy = "estadoActual", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<CambioEstado> origenCambios;
 
-    // Relación One-to-Many con Empleado
     @OneToMany(mappedBy = "estado", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<Empleado> empleadosEnEsteEstado;
 }

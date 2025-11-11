@@ -21,9 +21,9 @@ public class Sismografo {
     @Column(nullable = false)
     private String nombre;
 
-    // Relación One-to-Many con SerieTemporal
+
     @OneToMany(mappedBy = "sismografo", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<SerieTemporal> seriesTemporales;
 
-    // Otros atributos según el diagrama (coordenadas, etc.)
+   
 }
