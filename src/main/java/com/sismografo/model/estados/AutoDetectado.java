@@ -17,8 +17,12 @@ public class AutoDetectado extends Estado {
         CambioEstado ceActual = buscarCEActual(evento);
         ceActual.setFechaHoraFin(fechaHoraFin);
 
-        // crearCE(fechaHoraFin, );
+        CambioEstado nuevoCE = crearCE(fechaHoraFin, this);
 
+        Estado nuevoEstado = crearEstado();
+
+        evento.setEstadoActual(nuevoEstado);
+        evento.agregarCambioEstado(nuevoCE);
     }
 
     public CambioEstado buscarCEActual(EventoSismico evento){
@@ -32,9 +36,4 @@ public class AutoDetectado extends Estado {
         return new BloqueadoEnRevision("Bloqueado en revision");
     }
 
-    public void crearCE(LocalDateTime fechaHoraInicio, Estado estado){
-        new CambioEstado(fechaHoraInicio, estado);
-    }
-
-    
 }

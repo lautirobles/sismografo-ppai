@@ -9,18 +9,18 @@ import com.sismografo.dto.EventoSismicoDto;
 import com.sismografo.mapper.EventoSismicoMapper; 
 import com.sismografo.model.EventoSismico;
 import com.sismografo.model.GestorRevision;
-import com.sismografo.repositories.EventoSismicoRepositoryImpl;
+import com.sismografo.repositories.EventoSismicoRepository;
 
 import org.springframework.stereotype.Service;
 
 @Service
 public class GestorRevisionService {
     
-    private final EventoSismicoRepositoryImpl eventoSismicoRepository;
+    private final EventoSismicoRepository eventoSismicoRepository;
     private final EventoSismicoMapper mapper;
     private final GestorRevision gestor;
 
-    public GestorRevisionService(EventoSismicoRepositoryImpl eventoSismicoRepository){
+    public GestorRevisionService(EventoSismicoRepository eventoSismicoRepository){
         this.eventoSismicoRepository = eventoSismicoRepository;
         this.mapper = new EventoSismicoMapper();
         this.gestor = new GestorRevision();

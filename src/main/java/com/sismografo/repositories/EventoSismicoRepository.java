@@ -5,6 +5,6 @@ import org.springframework.stereotype.Repository;
 import com.sismografo.model.EventoSismico;
 
 @Repository
-public interface EventoSismicoRepositoryImpl extends JpaRepository<EventoSismico, Long> {
+public interface EventoSismicoRepository extends JpaRepository<EventoSismico, Long> {
     
 }
