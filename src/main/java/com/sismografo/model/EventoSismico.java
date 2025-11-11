@@ -4,7 +4,7 @@ import lombok.*;
 import java.time.LocalDateTime;
 import jakarta.persistence.*;
 import java.math.BigDecimal;
-import java.util.Set;
+import java.util.List;
 
 @Entity
 @Table(name = "evento_sismico")
@@ -62,7 +62,7 @@ public class EventoSismico {
 
     @OneToMany
     @JoinColumn(name = "cambio_estado", referencedColumnName = "id")
-    private Set<CambioEstado> cambioEstado;
+    private List<CambioEstado> cambioEstado;
 
     @ManyToOne
     @JoinColumn(name = "estado_actual", referencedColumnName = "id")
@@ -73,7 +73,9 @@ public class EventoSismico {
         return this.estadoActual.esAutoDetectado();
     }
 
-    public void bloquearEvSismico(){
-        
+    // No se si va aca o en services
+
+    public void bloquearEvSismico(LocalDateTime fechaHoraActual){
+        this.estadoActual.bloquearEvento(this, fechaHoraActual);
     }
 }

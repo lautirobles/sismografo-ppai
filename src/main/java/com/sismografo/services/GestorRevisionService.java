@@ -5,18 +5,18 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import com.sismografo.repositories.EventoSismicoRepositoryImpl;
 import com.sismografo.dto.EventoSismicoDto;
 import com.sismografo.mapper.EventoSismicoMapper; 
 import com.sismografo.model.EventoSismico;
 import com.sismografo.model.GestorRevision;
+import com.sismografo.repository.EventoSismicoRepositoryImpl;
 
 public class GestorRevisionService {
     
     private final EventoSismicoRepositoryImpl eventoSismicoRepository;
     private final EventoSismicoMapper mapper;
     private final GestorRevision gestor;
-    private final EventoSismicoService eventoSismicoService;
+    // private final EventoSismicoService eventoSismicoService;
 
     public GestorRevisionService(EventoSismicoRepositoryImpl eventoSismicoRepository, EventoSismicoService eventoSismicoService){
         this.eventoSismicoRepository = eventoSismicoRepository;
@@ -59,7 +59,8 @@ public class GestorRevisionService {
         EventoSismico eventoSelec = eventoSismicoRepository.findById(eventoDto.getId())
             .orElseThrow(() -> new RuntimeException("Evento no encontrado"));
 
-        eventoSismicoService.bloquearEvSismico(eventoSelec);
+        // llamamos al evento para que delegue en el estado (no se si hacerlo en la clase o el service)
+        eventoSelec.bloquearEvSismico(fechaHoraActual);
 
     }
 

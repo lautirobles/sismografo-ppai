@@ -33,4 +33,12 @@ public class CambioEstado {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "estado_siguiente_id")
     private Estado estadoSiguiente;
+
+
+    public boolean sosActual(){
+        if(fechaHoraFin != null){
+            return true;
+        }
+        return false;
+    }
 }

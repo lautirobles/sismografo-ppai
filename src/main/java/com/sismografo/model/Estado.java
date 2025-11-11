@@ -2,7 +2,11 @@ package com.sismografo.model;
 
 import jakarta.persistence.*;
 import lombok.*;
+
+import java.time.LocalDateTime;
 import java.util.Set;
+
+import org.yaml.snakeyaml.events.Event;
 
 @Entity
 @Table(name = "estado")
@@ -44,7 +48,7 @@ public abstract class Estado {
         System.out.println("Evento Anulado en el estado: " + this.nombre);
     }
 
-    public void bloquearEvento(){
+    public void bloquearEvento(EventoSismico evento, LocalDateTime fechaHoraActual){
         System.out.println("Evento Bloqueado en el estado: " + this.nombre);
     }
 
