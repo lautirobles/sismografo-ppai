@@ -7,6 +7,8 @@ import java.time.LocalDateTime;
 
 
 @Entity
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name = "tipo_estado")
 @Table(name = "estado")
 @Data
 @NoArgsConstructor

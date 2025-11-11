@@ -1,11 +1,11 @@
 -- ===========================
 -- ESTADOS (tabla abstracta pero con registros base)
 -- ===========================
-INSERT INTO estado (id, nombre) VALUES 
-(1, 'AutoDetectado'),
-(2, 'BloqueadoEnRevision'),
-(3, 'Confirmado'),
-(4, 'Rechazado');
+INSERT INTO estado (id, nombre, tipo_estado) VALUES 
+(1, 'AutoDetectado', 'AutoDetectado'),
+(2, 'BloqueadoEnRevision', 'BloqueadoEnRevision'),
+(3, 'Confirmado', 'Confirmado'),
+(4, 'Rechazado', 'Rechazado');
 
 -- ===========================
 -- ALCANCE SÍSMICO
