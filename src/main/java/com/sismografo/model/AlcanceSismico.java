@@ -5,7 +5,7 @@ import jakarta.persistence.*;
 
 
 @Entity
-@Table(name = "evento_sismico")
+@Table(name = "alcance_sismico")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor

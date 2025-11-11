@@ -15,7 +15,7 @@ import jakarta.persistence.*;
 @NoArgsConstructor
 @Builder
 @Entity
-@Table(name = "detalle_muestra_sismica")
+@Table(name = "serie_temporal")
 public class SerieTemporal {
 
     @Id
@@ -24,6 +24,11 @@ public class SerieTemporal {
 
     @Column(name = "fecha_hora_registro")
     private LocalDateTime fechaHoraRegistro;
+
+    @ManyToOne
+    @JoinColumn(name = "sismografo_id",referencedColumnName = "id")
+    private Sismografo sismografo;
+
 
     @OneToMany(mappedBy = "serieTemporal", fetch = FetchType.LAZY)
     private List<MuestraSismica> muestrasSismicas;

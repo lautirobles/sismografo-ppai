@@ -3,7 +3,9 @@ package com.sismografo.mapper;
 import com.sismografo.dto.MuestraSismicaDto;
 import com.sismografo.model.MuestraSismica;
 import java.util.stream.Collectors;
+import org.springframework.stereotype.Component;
 
+@Component
 public class MuestraSismicaMapper {
 
     public static MuestraSismicaDto entityToDto(MuestraSismica muestra) {

@@ -21,6 +21,13 @@ public class Sismografo {
     @Column(nullable = false)
     private String nombre;
 
+    @ManyToOne
+    @JoinColumn(name = "estacion_id",referencedColumnName = "id")
+    private EstacionSismologica estacionSismologica;
+
+    
+
+
 
     @OneToMany(mappedBy = "sismografo", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<SerieTemporal> seriesTemporales;
