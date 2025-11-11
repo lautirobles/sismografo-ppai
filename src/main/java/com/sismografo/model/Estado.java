@@ -2,7 +2,9 @@ package com.sismografo.model;
 
 import jakarta.persistence.*;
 import lombok.*;
-import java.util.Set;
+
+import java.time.LocalDateTime;
+
 
 @Entity
 @Table(name = "estado")
@@ -15,18 +17,12 @@ public abstract class Estado {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false, unique = true)
+    @Column(nullable = false)
     private String nombre;
 
-    private Boolean esAutoDetectado;
-    private Boolean esAltaDefinitiva;
-
-   
-    @OneToMany(mappedBy = "estadoActual", cascade = CascadeType.ALL, orphanRemoval = true)
-    private Set<CambioEstado> origenCambios;
-
-    @OneToMany(mappedBy = "estado", cascade = CascadeType.ALL, orphanRemoval = true)
-    private Set<Empleado> empleadosEnEsteEstado;
+    public Estado(String nombre){
+        this.nombre = nombre;
+    }
 
     public void rechazarEvento(){
         System.out.println("Evento Rechazado en el estado: " + this.nombre);
@@ -44,7 +40,7 @@ public abstract class Estado {
         System.out.println("Evento Anulado en el estado: " + this.nombre);
     }
 
-    public void bloquearEvento(){
+    public void bloquearEvento(EventoSismico evento, LocalDateTime fechaHoraActual){
         System.out.println("Evento Bloqueado en el estado: " + this.nombre);
     }
 
@@ -68,5 +64,8 @@ public abstract class Estado {
         System.out.println("Evento con cierre de ventana temporal en el estado: " + this.nombre);
     }
 
+    public boolean esAutoDetectado(){
+        return false;
+    }
     
 }
