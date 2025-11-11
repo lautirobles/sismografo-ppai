@@ -44,10 +44,7 @@ public class GestorRevision {
         this.sismografos = sismografos;
     }
 
-    // public List<EventoSismico> buscarEventosNorevisados(){
-    //     this.eventos.stream()
-    //     .filter(e -> e.esAutoDetectado())
-    //     .map(e -> e.obtenerDatosEvento())
-        
-    // }
+  public LocalDateTime obtenerFechaYHoraActual(){
+    return LocalDateTime.now();
+  }
 }
