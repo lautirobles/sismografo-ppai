@@ -21,11 +21,6 @@ public class CambioEstado {
     @JoinColumn(name = "fecha_hora_fin")
     private LocalDateTime fechaHoraFin;
 
-    // Relación Many-to-One con EventoSismico
-
-    // @ManyToOne(fetch = FetchType.LAZY)
-    // @JoinColumn(name = "evento_sismico_id", nullable = false)
-    // private EventoSismico eventoSismico;
 
     // Estado al que se cambió
     @ManyToOne(fetch = FetchType.LAZY)

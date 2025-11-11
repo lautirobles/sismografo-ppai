@@ -1,9 +1,13 @@
 package com.sismografo.mapper;
 
+import org.springframework.stereotype.Component;
+
 import com.sismografo.dto.DetalleMuestraSismicaDto;
 import com.sismografo.model.DetalleMuestraSismica;
 import com.sismografo.model.TipoDeDato;
 
+
+@Component
 public class DetalleMuestraSismicaMapper {
 
     public static DetalleMuestraSismicaDto entityToDto(DetalleMuestraSismica detalle) {

@@ -3,7 +3,9 @@ package com.sismografo.mapper;
 import com.sismografo.dto.SerieTemporalDto;
 import com.sismografo.model.SerieTemporal;
 import java.util.stream.Collectors;
+import org.springframework.stereotype.Component;
 
+@Component
 public class SerieTemporalMapper {
 
     public static SerieTemporalDto entityToDto(SerieTemporal serie) {

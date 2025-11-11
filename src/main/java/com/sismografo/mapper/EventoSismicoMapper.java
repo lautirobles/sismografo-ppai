@@ -5,6 +5,9 @@ import com.sismografo.dto.EventoSismicoDto;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class EventoSismicoMapper {
     
     public EventoSismicoDto toDTO(EventoSismico evento){

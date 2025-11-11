@@ -11,7 +11,9 @@ import lombok.*;
 
 public class Empleado {
 
-    // El ID se hereda de Usuario
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
     private String mail;
     private String telefono;
