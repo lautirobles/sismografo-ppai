@@ -1,5 +1,7 @@
 package com.sismografo.services;
 
+import com.sismografo.model.EventoSismico;
+
 // import java.time.LocalDateTime;
 // import java.util.List;
 // import java.util.stream.Collectors;
@@ -10,5 +12,10 @@ package com.sismografo.services;
 
 public class EventoSismicoService {
 
+
+    // aca deberia delegarle al estado el cambio 
+    public void bloquearEvSismico(EventoSismico eventoSelec){
+        
+    }
     
 }

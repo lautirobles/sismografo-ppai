@@ -72,4 +72,8 @@ public class EventoSismico {
     public boolean esAutoDetectado(){
         return this.estadoActual.esAutoDetectado();
     }
+
+    public void bloquearEvSismico(){
+        
+    }
 }

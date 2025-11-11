@@ -8,12 +8,22 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-public class DatosEventoDto {
+public class EventoSismicoDto {
     private Long id;
+    private LocalDateTime fechaHoraFin;
     private LocalDateTime fechaHoraOcurrencia;
     private BigDecimal latitudEpicentro;
     private BigDecimal longitudEpicentro;
     private BigDecimal latitudHipocentro;
     private BigDecimal longitudHipocentro;
     private float valorMagnitud;
+    private int magnitud;
+    private LocalDateTime fechaHoraRevision;
+   
+    // referencias a otras clases
+    private Long serieTemporalId;
+    private Long clasificacionSismoId;
+    private Long alcanceSismicoId;
+    private Long origenGeneracionId;
+    private Long estadoActualId;
 }

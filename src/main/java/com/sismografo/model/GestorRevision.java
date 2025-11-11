@@ -2,6 +2,9 @@ package com.sismografo.model;
 
 import java.time.LocalDateTime;
 import java.util.Set;
+
+import com.sismografo.dto.EventoSismicoDto;
+
 import java.util.List;
 import lombok.*;
 
@@ -12,9 +15,9 @@ public class GestorRevision {
     
     private Sesion sesion;
 
-    private Set<EventoSismico> eventos;
+    private List<EventoSismico> eventos;
 
-    private EventoSismico eventoSelec;
+    private EventoSismicoDto eventoSelec;
 
     private LocalDateTime fechaHoraActual;
 
@@ -32,13 +35,13 @@ public class GestorRevision {
 
     private Set<Sismografo> sismografos;
 
-    public GestorRevision(Sesion sesion, Set<EventoSismico> eventos, Set<Sismografo> sismografos){
+    public GestorRevision(Sesion sesion, List<EventoSismico> eventos, Set<Sismografo> sismografos){
         this.sesion = sesion;
         this.eventos = eventos;
         this.sismografos = sismografos;
     }
 
-    // public Set<EventoSismico> buscarEventosNorevisados(){
+    // public List<EventoSismico> buscarEventosNorevisados(){
     //     this.eventos.stream()
     //     .filter(e -> e.esAutoDetectado())
     //     .map(e -> e.obtenerDatosEvento())
