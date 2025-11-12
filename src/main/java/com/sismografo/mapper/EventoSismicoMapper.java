@@ -5,6 +5,8 @@ import com.sismografo.dto.EventoSismicoDto;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import com.sismografo.model.EventoSismico;
+
 import org.springframework.stereotype.Component;
 
 @Component
@@ -42,5 +44,16 @@ public class EventoSismicoMapper {
         return eventos.stream()
             .map(this::toDTO)
             .collect(Collectors.toList());
+    }
+
+    public EventoSismico  toEntity(EventoSismicoDto eventoDto){
+
+        EventoSismico entidad = new EventoSismico();
+
+        entidad.setMagnitud(eventoDto.getMagnitud());
+
+        return  entidad;
+
+
     }
 }
