@@ -70,7 +70,14 @@ public abstract class Estado {
         return false;
     }
 
-    public CambioEstado crearCE(LocalDateTime fechaHoraInicio, Estado estado, EventoSismico eventoSismico , Empleado empleado){
+    public CambioEstado buscarCEActual(EventoSismico evento){
+        return evento.getCambioEstado().stream()
+            .filter(c -> c.sosActual())
+            .findFirst()
+            .orElse(null);
+    }
+
+    public CambioEstado crearCE(LocalDateTime fechaHoraInicio, Estado estado, EventoSismico eventoSismico, Empleado empleado){
         return new CambioEstado(fechaHoraInicio, estado, eventoSismico, empleado);
     }
     

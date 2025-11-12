@@ -28,19 +28,9 @@ public class BloqueadoEnRevision extends Estado {
 
         CambioEstado nuevoCE = crearCE(fechaHoraFin, nuevoEstado, evento , empleado);
        
-        
-
         evento.setEstadoActual(nuevoEstado);
         evento.agregarCambioEstado(nuevoCE);
         
-
-    }
-
-    public CambioEstado buscarCEActual(EventoSismico evento){
-        return evento.getCambioEstado().stream()
-            .filter(c -> c.sosActual())
-            .findFirst()
-            .orElse(null);
     }
 
     public Estado crearEstado(){

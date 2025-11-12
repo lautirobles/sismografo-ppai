@@ -6,13 +6,13 @@ import org.springframework.stereotype.Service;
 
 
 
-import com.sismografo.dto.DatosSismosDto;
+// import com.sismografo.dto.DatosSismosDto;
 import com.sismografo.repositories.EventoSismicoRepository;
 import com.sismografo.model.CambioEstado;
 import com.sismografo.model.Estado;
 import com.sismografo.model.EventoSismico;
-import com.sismografo.services.EstadoService;
-import com.sismografo.services.CambioEstadoService;
+// import com.sismografo.services.EstadoService;
+// import com.sismografo.services.CambioEstadoService;
 
 
 import lombok.*;
@@ -69,7 +69,4 @@ public class EventoSismicoService {
         eventoSismicoRepository.save(evento);
     }
 
-
-
-    
 }
