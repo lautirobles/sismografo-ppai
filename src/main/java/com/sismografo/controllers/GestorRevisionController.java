@@ -9,13 +9,11 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
 
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import com.sismografo.dto.DatosSismosDto;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/revision-manual")
 public class GestorRevisionController {
