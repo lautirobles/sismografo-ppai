@@ -48,10 +48,10 @@ public class GestorRevisionController {
     public void tomarModificacion(@PathVariable Boolean modificacion){
         gestorRevisionService.tomarModificacion(modificacion);
     }
-
-    @PatchMapping("/rechazar/{idEvento}")
-    public void rechazarEvento(@PathVariable Long idEvento) {
-        gestorRevisionService.rechazarEvento(idEvento);
+    
+    @PatchMapping("/rechazar/{opc}")
+    public void rechazarEvento(@PathVariable String opc) {
+        gestorRevisionService.tomarAccion(opc);
         
     }
 

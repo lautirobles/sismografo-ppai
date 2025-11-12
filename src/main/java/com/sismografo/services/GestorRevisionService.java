@@ -12,9 +12,17 @@ import com.sismografo.dto.EventoSismicoDto;
 import com.sismografo.mapper.EventoSismicoMapper; 
 import com.sismografo.model.EventoSismico;
 import com.sismografo.model.GestorRevision;
+import com.sismografo.model.Sesion;
 import com.sismografo.repositories.EventoSismicoRepository;
 import com.sismografo.model.Empleado;
+<<<<<<< HEAD
 // import com.sismografo.services.EventoSismicoService;
+=======
+import com.sismografo.services.SesionService;
+import com.sismografo.services.EventoSismicoService;
+import com.sismografo.services.SesionService;
+import java.util.Optional;
+>>>>>>> 92185c594b57d146d04e3bdc3a428631ba077b85
 
 import lombok.*;
 
@@ -29,27 +37,20 @@ public class GestorRevisionService {
     private final EventoSismicoMapper mapper;
     private final GestorRevision gestor;
     private final EventoSismicoService eventoSismicoService;
+    private final SesionService sesionService;
     
 
-    // CREO que hay que guardar los eventos en el atributo eventos del gestor, no se si hace falta ahora que estamos sacando los datos de la base
-
-    // busca los eventos que todavia no fueron revisados
     public List<EventoSismicoDto> buscarEventosNoRevisados(){
         List<EventoSismico> eventos = eventoSismicoRepository.findAll().stream()
         .filter(e -> e.esAutoDetectado())
         .collect(Collectors.toList());
-
-        eventos = ordenarEventos(eventos);
         gestor.setEventos(eventos);
+
+        gestor.ordenarEventos();
         return mapper.toDTOList(eventos);
     }
 
-    // funcion que ordena los eventos de acuerdo a la ocurrencia (los mas recientes primero)
-    public List<EventoSismico> ordenarEventos(List<EventoSismico> eventos){
-        return eventos.stream()
-            .sorted(Comparator.comparing(EventoSismico::getFechaHoraOcurrencia).reversed())
-            .collect(Collectors.toList());
-    }
+
 
    
     public DatosSismosDto bloquearEvento(Long eventoId){
@@ -63,24 +64,29 @@ public class GestorRevisionService {
         return gestor.getDatosSismicosEventoSelec();
     }
 
+<<<<<<< HEAD
     
 
+=======
+>>>>>>> 92185c594b57d146d04e3bdc3a428631ba077b85
     public void habilitarOpcionVisualizarMapa(){
         
     }
 
     public void tomarSolicitud(boolean solicitud){
         if(solicitud){
+<<<<<<< HEAD
             System.out.println("Funcionalidad en construccion! (no)");
+=======
+
+>>>>>>> 92185c594b57d146d04e3bdc3a428631ba077b85
         }
 
         habilitarModificacionEvento();
     }
 
     public void habilitarModificacionEvento(){
-        // aca hay que mandarle el evento y recibir un put desde el front con la modificacion
-        // igual el flujo del CU dice que no se modifica
-        //EventoSismicoDto evento = gestor.getEventoSelec();
+ 
         
     }
 
@@ -97,39 +103,29 @@ public class GestorRevisionService {
     }
 
     public void tomarAccion(String opc){
-        DatosSismosDto datosSismicosEv = gestor.getDatosSismicosEventoSelec();
-        validarDatos(datosSismicosEv, opc);
-        Empleado empleado = buscarEmpleado();
-
-    }
-
-    public boolean validarDatos(DatosSismosDto datosSismicosEv, String opc){
-        if(datosSismicosEv.getAlcance() != null && datosSismicosEv.getClasificacion() != null && datosSismicosEv.getOrigen() != null){
-            if(opc != null){
-                return true;
-            }
-            System.out.println("No paso la validacion (no se registra la opcion seleccionada`)");
-            return false;
-        }
-        System.out.println("No paso la validacion (datos del sismo incompletos)");
-        return false;
-    }
-
-    public Empleado buscarEmpleado(){
-        return gestor.getSesion().conocerUsuario();
-    }
-
-
-    public LocalDateTime obtenerFechaYHoraActual(){
-        return LocalDateTime.now();
-    }
-
-
-    public void rechazarEvento(Long eventoId){
-        // REVISAR XQ sino lo buscaba de nuevo en la bd se rompia todo si usaba el que tenia guardado
+       
+        gestor.setOpcionSeleccionada(opc);
+        gestor.validarDatos();
+        Optional<Sesion> sesionOpt = sesionService.findByFechaHoraFin();
+    
+  
+        sesionOpt.ifPresent(sesion -> gestor.setSesion(sesion));
+        gestor.buscarEmpleado();
         gestor.setEventoSelec(eventoSismicoService.buscarPorId(gestor.getEventoSelec().getId()));
         gestor.actualizarEstado();
         eventoSismicoService.persistirBloqueo(gestor.getEventoSelec(), gestor.getFechaHoraActual());
+
+    }
+
+
+
+
+
+
+
+
+    public void rechazarEvento(Long eventoId){
+       
 
     }
 

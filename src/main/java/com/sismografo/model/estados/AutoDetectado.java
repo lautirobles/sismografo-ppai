@@ -24,7 +24,7 @@ public class AutoDetectado extends Estado {
         
         Estado nuevoEstado = crearEstado();
 
-        CambioEstado nuevoCE = crearCE(fechaHoraFin, nuevoEstado, evento);
+        CambioEstado nuevoCE = crearCE(fechaHoraFin, nuevoEstado, evento, null);
        
        
 

@@ -26,7 +26,7 @@ public abstract class Estado {
         this.nombre = nombre;
     }
 
-    public void rechazarEvento(EventoSismico evento, LocalDateTime fechaHoraActual){
+    public void rechazarEvento(EventoSismico evento, LocalDateTime fechaHoraActual,Empleado empleado){
         System.out.println("Evento Rechazado en el estado: " + this.nombre);
     }
 
@@ -77,8 +77,8 @@ public abstract class Estado {
             .orElse(null);
     }
 
-    public CambioEstado crearCE(LocalDateTime fechaHoraInicio, Estado estado, EventoSismico eventoSismico){
-        return new CambioEstado(fechaHoraInicio, estado, eventoSismico);
+    public CambioEstado crearCE(LocalDateTime fechaHoraInicio, Estado estado, EventoSismico eventoSismico, Empleado empleado){
+        return new CambioEstado(fechaHoraInicio, estado, eventoSismico, empleado);
     }
     
 }

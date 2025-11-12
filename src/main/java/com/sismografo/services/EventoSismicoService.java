@@ -40,7 +40,7 @@ public class EventoSismicoService {
 
     public void persistirBloqueo(EventoSismico evento, LocalDateTime fechaHoraActual) {
 
-        // 1️⃣ Buscar el cambio de estado anterior: el que tiene fechaHoraFin = fechaHoraActual
+       
         CambioEstado ceAnterior = evento.getCambioEstado().stream()
             .filter(ce -> fechaHoraActual.equals(ce.getFechaHoraFin()))
             .findFirst()
@@ -50,13 +50,12 @@ public class EventoSismicoService {
             cambioEstadoService.guardarCambioEstado(ceAnterior);
         }
 
-        // 2️⃣ Persistir el nuevo estado si no tiene ID
         Estado nuevoEstado = evento.getEstadoActual();
         if (nuevoEstado != null && nuevoEstado.getId() == null) {
             estadoService.guardarEstado(nuevoEstado);
         }
 
-        // 3️⃣ Buscar el nuevo cambio de estado (el que tiene id nulo)
+        
         CambioEstado nuevoCE = evento.getCambioEstado().stream()
             .filter(ce -> ce.getId() == null && ce.getFechaHoraInicio().equals(fechaHoraActual))
             .findFirst()
@@ -66,7 +65,7 @@ public class EventoSismicoService {
             cambioEstadoService.guardarCambioEstado(nuevoCE);
         }
 
-        // 4️⃣ Finalmente guardar el evento
+
         eventoSismicoRepository.save(evento);
     }
 
