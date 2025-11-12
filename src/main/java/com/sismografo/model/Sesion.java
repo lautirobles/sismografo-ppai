@@ -21,7 +21,7 @@ public class Sesion {
     private LocalDateTime fechaHoraFin;
 
     // Relación Many-to-One con Usuario
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "usuario_id", nullable = false)
     private Usuario usuario;
 

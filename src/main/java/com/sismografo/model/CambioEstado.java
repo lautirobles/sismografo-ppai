@@ -36,10 +36,11 @@ public class CambioEstado {
     @JoinColumn(name = "evento_sismico", referencedColumnName = "id")
     private EventoSismico eventoSismico;
 
-    public  CambioEstado(LocalDateTime fechaHoraInicio, Estado estado , EventoSismico evento){
+    public  CambioEstado(LocalDateTime fechaHoraInicio, Estado estado , EventoSismico evento, Empleado empleado){
         this.fechaHoraInicio = fechaHoraInicio;
         this.estado = estado;
         this.eventoSismico = evento;
+        this.empleado = empleado;
     }
 
     public CambioEstado(LocalDateTime fechaHoraInicio, Estado estado, Empleado empleado, EventoSismico eventoSismico){
