@@ -80,6 +80,8 @@ public class GestorRevisionService {
     public String[] tomarModificacion(boolean modificacion){
         if(modificacion){
             System.out.println("Evento modificado!! (no)");
+        }else{
+            System.out.println("Evento no modificado!! (no)");
         }
 
         return crearOpciones();
