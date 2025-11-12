@@ -6,6 +6,10 @@ import com.sismografo.model.CambioEstado;
 import com.sismografo.model.Estado;
 import com.sismografo.model.EventoSismico;
 
+import jakarta.persistence.*;
+
+@Entity
+@DiscriminatorValue("AutoDetectado")
 public class AutoDetectado extends Estado {
     
 

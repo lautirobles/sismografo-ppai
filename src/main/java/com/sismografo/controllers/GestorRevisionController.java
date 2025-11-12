@@ -11,6 +11,7 @@ import java.util.List;
 
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -32,9 +33,10 @@ public class GestorRevisionController {
         return gestorRevisionService.buscarEventosNoRevisados();
     }
 
-    @PostMapping("/bloquear-evento/{idEvento}")
-    public void bloquearEvento(@PathVariable Long idEvento){
+    @PatchMapping("/bloquear/{idEvento}")
+    public String bloquearEvento(@PathVariable Long idEvento) {
         gestorRevisionService.bloquearEvento(idEvento);
+        return "Evento con ID " + idEvento + " bloqueado correctamente.";
     }
 
 }

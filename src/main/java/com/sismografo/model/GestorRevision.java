@@ -5,7 +5,6 @@ import java.util.Set;
 
 import org.springframework.stereotype.Component;
 
-import com.sismografo.dto.EventoSismicoDto;
 
 import java.util.List;
 import lombok.*;

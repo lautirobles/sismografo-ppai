@@ -8,6 +8,7 @@ import java.time.LocalDateTime;
 @Entity
 @Table(name = "cambio_estado")
 @Data
+@AllArgsConstructor
 @NoArgsConstructor
 public class CambioEstado {
 
@@ -24,10 +25,14 @@ public class CambioEstado {
 
     // Estado al que se cambió
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "estado")
+    @JoinColumn(name = "estado",referencedColumnName = "id")
     private Estado estado;
 
-    public CambioEstado(LocalDateTime fechaHoraInicio, Estado estado){
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "evento_sismico", referencedColumnName = "id")
+    private EventoSismico eventoSismico;
+
+    public  CambioEstado(LocalDateTime fechaHoraInicio, Estado estado){
         this.fechaHoraInicio = fechaHoraInicio;
         this.estado = estado;
     }

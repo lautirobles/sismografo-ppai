@@ -1,11 +1,11 @@
 -- ===========================
 -- ESTADOS (tabla abstracta pero con registros base)
 -- ===========================
-INSERT INTO estado (id, nombre) VALUES 
-(1, 'AutoDetectado'),
-(2, 'BloqueadoEnRevision'),
-(3, 'Confirmado'),
-(4, 'Rechazado');
+INSERT INTO estado (id, nombre, tipo_estado) VALUES 
+(1, 'AutoDetectado', 'AutoDetectado'),
+(2, 'BloqueadoEnRevision', 'BloqueadoEnRevision'),
+(3, 'Confirmado', 'Confirmado'),
+(4, 'Rechazado', 'Rechazado');
 
 -- ===========================
 -- ALCANCE SÍSMICO
@@ -71,3 +71,16 @@ INSERT INTO evento_sismico (
 (3, '2025-11-11T08:25:00', '2025-11-11T08:20:00', -31.40, -64.10, -31.42, -64.12, 5.0, 5, NULL, 3, 2, 1, 1, 1),
 (4, '2025-11-11T08:35:00', '2025-11-11T08:30:00', -31.48, -64.21, -31.49, -64.23, 3.6, 3, NULL, 4, 1, 1, 1, 1),
 (5, '2025-11-11T08:45:00', '2025-11-11T08:40:00', -31.46, -64.20, -31.47, -64.22, 4.3, 4, NULL, 5, 1, 2, 1, 1);
+
+
+
+INSERT INTO cambio_estado (id, fecha_hora_inicio, fecha_hora_fin, estado, evento_sismico)
+VALUES 
+-- Primer cambio: se creó el evento (AutoDetectado)
+(1, '2025-11-11T08:00:00', '2025-11-11T08:02:00', 1, 1),
+
+-- Segundo cambio: pasó a Bloqueado en revisión
+(2, '2025-11-11T08:02:00', '2025-11-11T08:04:00', 2, 1),
+
+-- Tercer cambio: volvió a AutoDetectado (actual)
+(3, '2025-11-11T08:04:00', NULL, 1, 1);

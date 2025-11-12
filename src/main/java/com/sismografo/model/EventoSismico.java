@@ -61,7 +61,7 @@ public class EventoSismico {
     private OrigenGeneracion origenGeneracion;
 
     @OneToMany
-    @JoinColumn(name = "cambio_estado", referencedColumnName = "id")
+    (mappedBy = "eventoSismico")
     private List<CambioEstado> cambioEstado;
 
     @ManyToOne

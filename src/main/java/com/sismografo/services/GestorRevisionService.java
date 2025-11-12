@@ -12,6 +12,7 @@ import com.sismografo.mapper.EventoSismicoMapper;
 import com.sismografo.model.EventoSismico;
 import com.sismografo.model.GestorRevision;
 import com.sismografo.repositories.EventoSismicoRepository;
+import com.sismografo.repositories.CambioEstadoRepository;
 
 import lombok.RequiredArgsConstructor;
 
@@ -21,6 +22,7 @@ import lombok.RequiredArgsConstructor;
 public class GestorRevisionService {
     
     private final EventoSismicoRepository eventoSismicoRepository;
+    private final CambioEstadoRepository cambioEstadoRepository;
     private final EventoSismicoMapper mapper;
     private final GestorRevision gestor;
 
@@ -51,9 +53,11 @@ public class GestorRevisionService {
         EventoSismico eventoSelec = eventoSismicoRepository.findById(idEvento)
             .orElseThrow(() -> new RuntimeException("Evento no encontrado"));
         gestor.setEventoSelec(eventoSelec);
-        gestor.setEventoSelec(eventoSelec);
         gestor.obtenerFechaYHoraActual();
         gestor.bloquearEvSismico();
+
+        eventoSismicoRepository.save(eventoSelec);
+        cambioEstadoRepository.saveAll(eventoSelec.getCambioEstado());
 
     }
 
