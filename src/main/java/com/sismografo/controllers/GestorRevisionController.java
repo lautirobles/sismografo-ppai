@@ -39,6 +39,16 @@ public class GestorRevisionController {
         
     }
 
+    @PatchMapping("/mapa")
+    public void tomarSolicitud(@PathVariable Boolean solicitud){
+        gestorRevisionService.tomarSolicitud(solicitud);
+    }
+
+    @PatchMapping("/modificar")
+    public void tomarModificacion(@PathVariable Boolean modificacion){
+        gestorRevisionService.tomarModificacion(modificacion);
+    }
+
     @PatchMapping("/rechazar/{idEvento}")
     public void rechazarEvento(@PathVariable Long idEvento) {
         gestorRevisionService.rechazarEvento(idEvento);

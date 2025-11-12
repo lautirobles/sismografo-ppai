@@ -14,7 +14,7 @@ import com.sismografo.model.EventoSismico;
 import com.sismografo.model.GestorRevision;
 import com.sismografo.repositories.EventoSismicoRepository;
 import com.sismografo.model.Empleado;
-import com.sismografo.services.EventoSismicoService;
+// import com.sismografo.services.EventoSismicoService;
 
 import lombok.*;
 
@@ -63,10 +63,7 @@ public class GestorRevisionService {
         return gestor.getDatosSismicosEventoSelec();
     }
 
-
     
-
-
 
     public void habilitarOpcionVisualizarMapa(){
         
@@ -74,7 +71,7 @@ public class GestorRevisionService {
 
     public void tomarSolicitud(boolean solicitud){
         if(solicitud){
-            // aca deberia mostrar el mapa
+            System.out.println("Funcionalidad en construccion! (no)");
         }
 
         habilitarModificacionEvento();
@@ -87,6 +84,14 @@ public class GestorRevisionService {
         
     }
 
+    public void tomarModificacion(boolean modificacion){
+        if(modificacion){
+            System.out.println("Evento modificado!! (no)");
+        }
+
+        crearOpciones();
+    }
+
     public String[] crearOpciones(){
         return gestor.getOpciones();
     }
@@ -96,7 +101,6 @@ public class GestorRevisionService {
         validarDatos(datosSismicosEv, opc);
         Empleado empleado = buscarEmpleado();
 
-        actualizarEstado(opc, datosSismicosEv, empleado);
     }
 
     public boolean validarDatos(DatosSismosDto datosSismicosEv, String opc){
@@ -115,11 +119,6 @@ public class GestorRevisionService {
         return gestor.getSesion().conocerUsuario();
     }
 
-    public void actualizarEstado(String opc, DatosSismosDto datosSismosEv, Empleado emp){
-        LocalDateTime fecha = obtenerFechaYHoraActual();
-
-        
-    }
 
     public LocalDateTime obtenerFechaYHoraActual(){
         return LocalDateTime.now();

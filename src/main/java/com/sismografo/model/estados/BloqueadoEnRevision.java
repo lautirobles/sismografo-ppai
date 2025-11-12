@@ -18,7 +18,7 @@ public class BloqueadoEnRevision extends Estado {
         super(nombre);
     }
 
-
+    @Override
     public void rechazarEvento(EventoSismico evento, LocalDateTime fechaHoraFin){
         CambioEstado ceActual = buscarCEActual(evento);
       
@@ -28,19 +28,9 @@ public class BloqueadoEnRevision extends Estado {
 
         CambioEstado nuevoCE = crearCE(fechaHoraFin, nuevoEstado, evento);
        
-        
-
         evento.setEstadoActual(nuevoEstado);
         evento.agregarCambioEstado(nuevoCE);
         
-
-    }
-
-    public CambioEstado buscarCEActual(EventoSismico evento){
-        return evento.getCambioEstado().stream()
-            .filter(c -> c.sosActual())
-            .findFirst()
-            .orElse(null);
     }
 
     public Estado crearEstado(){
