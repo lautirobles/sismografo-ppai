@@ -5,6 +5,11 @@ import java.util.Set;
 
 import org.springframework.stereotype.Component;
 
+<<<<<<< HEAD
+=======
+import com.sismografo.dto.DatosSismosDto;
+import com.sismografo.dto.EventoSismicoDto;
+>>>>>>> 5a1e04c9aa869b99ffea999aec4477a2910194cd
 
 import java.util.List;
 import lombok.*;
@@ -23,7 +28,7 @@ public class GestorRevision {
 
     private LocalDateTime fechaHoraActual;
 
-    private List<String> datosSismicosEventoSelec;
+    private DatosSismosDto datosSismicosEventoSelec;
 
     private String[] opciones = {"Confirmar", "Rechazar", "Solicitar revision a experto"};
 
@@ -31,7 +36,7 @@ public class GestorRevision {
 
     private String accionSeleccionada;
 
-    private Empleado empleado;
+    private String empleado;
 
     private boolean visualizarMapa;
 

@@ -15,11 +15,9 @@ public class Empleado {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    private String apellido;
+    private String nombre;
     private String mail;
     private String telefono;
 
-    // Relación Many-to-One con Estado
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "estado_id")
-    private Estado estado;
 }

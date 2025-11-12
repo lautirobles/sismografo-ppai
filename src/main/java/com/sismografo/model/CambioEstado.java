@@ -22,6 +22,8 @@ public class CambioEstado {
     @JoinColumn(name = "fecha_hora_fin")
     private LocalDateTime fechaHoraFin;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Empleado empleado;
 
     // Estado al que se cambió
     @ManyToOne(fetch = FetchType.LAZY)
@@ -35,6 +37,12 @@ public class CambioEstado {
     public  CambioEstado(LocalDateTime fechaHoraInicio, Estado estado){
         this.fechaHoraInicio = fechaHoraInicio;
         this.estado = estado;
+    }
+
+    public CambioEstado(LocalDateTime fechaHoraInicio, Estado estado, Empleado empleado){
+        this.fechaHoraInicio = fechaHoraInicio;
+        this.estado = estado;
+        this.empleado = empleado;
     }
 
     public boolean sosActual(){
