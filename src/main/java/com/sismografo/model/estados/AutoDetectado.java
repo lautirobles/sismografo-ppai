@@ -12,11 +12,12 @@ import jakarta.persistence.*;
 @DiscriminatorValue("AutoDetectado")
 public class AutoDetectado extends Estado {
     
-
+    @Override
     public boolean esAutoDetectado(){
         return true;
     }
 
+    @Override  
     public void bloquearEvento(EventoSismico evento, LocalDateTime fechaHoraFin){
         CambioEstado ceActual = buscarCEActual(evento);
       

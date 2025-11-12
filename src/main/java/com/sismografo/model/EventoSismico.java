@@ -91,9 +91,16 @@ public class EventoSismico {
         return new DatosSismosDto(alcance, origen, clasificacion);
     }
 
+    public void confirmarEvento(LocalDateTime fechaHoraActual, Empleado empleado){
+        this.estadoActual.confirmarEvento(this, fechaHoraActual, empleado);
+    }
+
     public void rechazarEvento(LocalDateTime fechaHoraActual,Empleado empleado){
         this.estadoActual.rechazarEvento(this, fechaHoraActual, empleado);
     }
 
+    public void solicitarRevisionExperto(LocalDateTime fechaHoraActual, Empleado empleado){
+        this.estadoActual.solicitarRevisionExperto(this, fechaHoraActual, empleado);
+    }
 
 }

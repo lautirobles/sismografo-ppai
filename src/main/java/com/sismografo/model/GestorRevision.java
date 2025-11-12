@@ -66,9 +66,15 @@ public class GestorRevision {
         this.datosSismicosEventoSelec = eventoSelec.buscarDatosSismicos();
   }
 
-  public void actualizarEstado(){
+  public void actualizarEstado(String opc){
     obtenerFechaYHoraActual();
-    this.eventoSelec.rechazarEvento(this.fechaHoraActual,this.empleado);
+    if(opc == "Confirmar"){
+      this.eventoSelec.confirmarEvento(this.fechaHoraActual, this.empleado);
+    }else if(opc == "Rechazar"){
+      this.eventoSelec.rechazarEvento(this.fechaHoraActual,this.empleado);
+    }else if(opc == "Solicitar revision a experto"){
+      this.eventoSelec.solicitarRevisionExperto(this.fechaHoraActual, this.empleado);
+    }
     
   }
 
