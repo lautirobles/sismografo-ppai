@@ -70,8 +70,8 @@ public abstract class Estado {
         return false;
     }
 
-    public CambioEstado crearCE(LocalDateTime fechaHoraInicio, Estado estado){
-        return new CambioEstado(fechaHoraInicio, estado);
+    public CambioEstado crearCE(LocalDateTime fechaHoraInicio, Estado estado, EventoSismico eventoSismico){
+        return new CambioEstado(fechaHoraInicio, estado, eventoSismico);
     }
     
 }

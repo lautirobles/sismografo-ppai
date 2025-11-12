@@ -16,14 +16,16 @@ public class CambioEstado {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @JoinColumn(name = "fecha_hora_inicio")
+    @Column(name = "fecha_hora_inicio")
     private LocalDateTime fechaHoraInicio;
 
-    @JoinColumn(name = "fecha_hora_fin")
+    @Column(name = "fecha_hora_fin")
     private LocalDateTime fechaHoraFin;
 
     @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "empleado_id", referencedColumnName = "id")
     private Empleado empleado;
+
 
     // Estado al que se cambió
     @ManyToOne(fetch = FetchType.LAZY)
@@ -34,21 +36,21 @@ public class CambioEstado {
     @JoinColumn(name = "evento_sismico", referencedColumnName = "id")
     private EventoSismico eventoSismico;
 
-    public  CambioEstado(LocalDateTime fechaHoraInicio, Estado estado){
+    public  CambioEstado(LocalDateTime fechaHoraInicio, Estado estado , EventoSismico evento){
         this.fechaHoraInicio = fechaHoraInicio;
         this.estado = estado;
+        this.eventoSismico = evento;
     }
 
-    public CambioEstado(LocalDateTime fechaHoraInicio, Estado estado, Empleado empleado){
+    public CambioEstado(LocalDateTime fechaHoraInicio, Estado estado, Empleado empleado, EventoSismico eventoSismico){
         this.fechaHoraInicio = fechaHoraInicio;
         this.estado = estado;
         this.empleado = empleado;
+        this.eventoSismico = eventoSismico;
     }
 
     public boolean sosActual(){
-        if(fechaHoraFin != null){
-            return true;
-        }
-        return false;
+    return fechaHoraFin == null;
     }
+
 }

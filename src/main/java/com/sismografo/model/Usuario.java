@@ -19,9 +19,11 @@ public class Usuario {
     @Column(nullable = false, unique = true)
     private String nombreUsuario;
 
+    @OneToOne
+    @JoinColumn(name = "empleado_id", referencedColumnName = "id")
     private Empleado empleado;
 
-    // Relación One-to-Many con Sesion
+
     @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<Sesion> sesiones;
 

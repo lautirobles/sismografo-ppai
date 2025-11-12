@@ -6,4 +6,5 @@ import com.sismografo.model.CambioEstado;
 
 @Repository
 public interface CambioEstadoRepository extends JpaRepository<CambioEstado, Long> {
+
 }

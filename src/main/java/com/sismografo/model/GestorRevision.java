@@ -5,11 +5,7 @@ import java.util.Set;
 
 import org.springframework.stereotype.Component;
 
-<<<<<<< HEAD
-=======
 import com.sismografo.dto.DatosSismosDto;
-import com.sismografo.dto.EventoSismicoDto;
->>>>>>> 5a1e04c9aa869b99ffea999aec4477a2910194cd
 
 import java.util.List;
 import lombok.*;
@@ -56,6 +52,10 @@ public class GestorRevision {
 
   public void obtenerFechaYHoraActual(){
     this.fechaHoraActual = LocalDateTime.now();
+  }
+
+  public void tomarSeleccion(EventoSismico evento){
+    this.eventoSelec = evento;
   }
 
 
