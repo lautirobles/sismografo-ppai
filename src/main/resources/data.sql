@@ -10,7 +10,7 @@ INSERT INTO estado (nombre, tipo_estado) VALUES
 -- ===========================
 INSERT INTO alcance_sismico (nombre, descripcion) VALUES
 ('Local', 'Evento detectado en una zona reducida'),
-('Regional', 'Evento que abarca una región amplia');
+('Regional', 'Evento que abarca una región amplia'),
 ('Global', 'Evento que abarca una rel mundo');
 
 -- ===========================
@@ -26,7 +26,7 @@ INSERT INTO clasificacion_sismo (km_profundidad_desde, km_profundidad_hasta, nom
 -- ===========================
 INSERT INTO origen_generacion (nombre, descripcion) VALUES
 ('Tectonico', 'Provocado por placas'),
-('Volcanico', 'Provocado por volcan');
+('Volcanico', 'Provocado por volcan'),
 ('Artifical', 'Provocado por ser humano');
 
 -- ===========================
@@ -78,6 +78,10 @@ INSERT INTO cambio_estado (fecha_hora_inicio, fecha_hora_fin, estado, evento_sis
 VALUES 
 ('2025-11-11T08:00:00', '2025-11-11T08:02:00', 1, 1),
 ('2025-11-11T08:02:00', '2025-11-11T08:04:00', 1, 1),
+('2025-11-11T08:00:00', NULL, 1, 2),
+('2025-11-11T08:00:00', NULL, 1, 3),
+('2025-11-11T08:00:00', NULL, 1, 4),
+('2025-11-11T08:00:00', NULL, 1, 5),
 ('2025-11-11T08:04:00', NULL, 1, 1);
 
 

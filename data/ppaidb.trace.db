@@ -1006,3 +1006,7 @@ SELECT * FROMESTADO [42000-232]
 org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "SELECT * [*]EVENTO_SISMICO"
 Syntax error in SQL statement "SELECT * [*]EVENTO_SISMICO"; SQL statement:
 SELECT * EVENTO_SISMICO [42000-232]
+2025-11-12 20:53:24.055972-03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "([*]'Global', 'Evento que abarca una rel mundo')"; se esperaba "(, SELECT, TABLE, VALUES"
+Syntax error in SQL statement "([*]'Global', 'Evento que abarca una rel mundo')"; expected "(, SELECT, TABLE, VALUES"; SQL statement:
+('Global', 'Evento que abarca una rel mundo') [42001-232]
