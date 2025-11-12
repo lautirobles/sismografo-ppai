@@ -86,28 +86,12 @@ public class GestorRevisionService {
         gestor.setOpcionSeleccionada(opc);
         gestor.validarDatos();
         Optional<Sesion> sesionOpt = sesionService.findByFechaHoraFin();
-    
-  
         sesionOpt.ifPresent(sesion -> gestor.setSesion(sesion));
         gestor.buscarEmpleado();
         gestor.setEventoSelec(eventoSismicoService.buscarPorId(gestor.getEventoSelec().getId()));
         gestor.actualizarEstado();
         eventoSismicoService.persistirBloqueo(gestor.getEventoSelec(), gestor.getFechaHoraActual());
-
-
        
-    }
-
-
-
-
-
-
-
-
-    public void rechazarEvento(Long eventoId){
-       
-
     }
 
     
