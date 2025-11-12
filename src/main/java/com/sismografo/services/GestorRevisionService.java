@@ -15,14 +15,10 @@ import com.sismografo.model.GestorRevision;
 import com.sismografo.model.Sesion;
 import com.sismografo.repositories.EventoSismicoRepository;
 import com.sismografo.model.Empleado;
-<<<<<<< HEAD
-// import com.sismografo.services.EventoSismicoService;
-=======
 import com.sismografo.services.SesionService;
 import com.sismografo.services.EventoSismicoService;
 import com.sismografo.services.SesionService;
 import java.util.Optional;
->>>>>>> 92185c594b57d146d04e3bdc3a428631ba077b85
 
 import lombok.*;
 
@@ -64,22 +60,13 @@ public class GestorRevisionService {
         return gestor.getDatosSismicosEventoSelec();
     }
 
-<<<<<<< HEAD
-    
-
-=======
->>>>>>> 92185c594b57d146d04e3bdc3a428631ba077b85
     public void habilitarOpcionVisualizarMapa(){
         
     }
 
     public void tomarSolicitud(boolean solicitud){
         if(solicitud){
-<<<<<<< HEAD
             System.out.println("Funcionalidad en construccion! (no)");
-=======
-
->>>>>>> 92185c594b57d146d04e3bdc3a428631ba077b85
         }
 
         habilitarModificacionEvento();
