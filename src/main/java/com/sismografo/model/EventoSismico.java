@@ -91,8 +91,8 @@ public class EventoSismico {
         return new DatosSismosDto(alcance, origen, clasificacion);
     }
 
-    public void rechazarEvento(LocalDateTime fechaHoraActual){
-        this.estadoActual.rechazarEvento(this, fechaHoraActual);
+    public void rechazarEvento(LocalDateTime fechaHoraActual,Empleado empleado){
+        this.estadoActual.rechazarEvento(this, fechaHoraActual, empleado);
     }
 
 

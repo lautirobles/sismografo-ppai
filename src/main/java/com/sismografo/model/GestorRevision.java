@@ -2,12 +2,13 @@ package com.sismografo.model;
 
 import java.time.LocalDateTime;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Component;
 
 import com.sismografo.dto.DatosSismosDto;
 
-
+import java.util.Comparator;
 import java.util.List;
 import lombok.*;
 
@@ -33,7 +34,9 @@ public class GestorRevision {
 
     private String accionSeleccionada;
 
-    private String empleado;
+    private String opcionSeleccionada;
+
+    private Empleado empleado;
 
     private boolean visualizarMapa;
 
@@ -65,9 +68,30 @@ public class GestorRevision {
 
   public void actualizarEstado(){
     obtenerFechaYHoraActual();
-    this.eventoSelec.rechazarEvento(this.fechaHoraActual);
+    this.eventoSelec.rechazarEvento(this.fechaHoraActual,this.empleado);
     
   }
+
+  public List<EventoSismico> ordenarEventos(){
+        return this.eventos.stream()
+            .sorted(Comparator.comparing(EventoSismico::getFechaHoraOcurrencia).reversed())
+            .collect(Collectors.toList());
+  }
+
+
+  public Boolean validarDatos(){
+    if (datosSismicosEventoSelec.getAlcance() != null && datosSismicosEventoSelec.getClasificacion() != null && datosSismicosEventoSelec.getOrigen() != null && opcionSeleccionada != null) {
+        return true;
+    }
+    return false;
+  }
+
+  public void buscarEmpleado(){
+    Empleado empleado = sesion.conocerUsuario();
+    this.empleado = empleado;
+
+  }
+
 
  
   

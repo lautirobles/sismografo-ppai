@@ -19,12 +19,12 @@ public class Usuario {
     @Column(nullable = false, unique = true)
     private String nombreUsuario;
 
-    @OneToOne
+    @OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "empleado_id", referencedColumnName = "id")
     private Empleado empleado;
 
 
-    @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL, orphanRemoval = true,fetch = FetchType.EAGER)
     private Set<Sesion> sesiones;
 
 

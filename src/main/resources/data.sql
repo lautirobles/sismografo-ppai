@@ -77,3 +77,18 @@ VALUES
 ('2025-11-11T08:00:00', '2025-11-11T08:02:00', 1, 1),
 ('2025-11-11T08:02:00', '2025-11-11T08:04:00', 1, 1),
 ('2025-11-11T08:04:00', NULL, 1, 1);
+
+
+-- Insertamos un Empleado
+INSERT INTO empleado (apellido, nombre, mail, telefono) 
+VALUES ('González', 'Juan', 'juan.gonzalez@mail.com', '123456789');
+
+
+-- Insertamos un Usuario asociado al Empleado (empleado_id = 1)
+INSERT INTO usuario (nombre_usuario, empleado_id) 
+VALUES ('juangonz', 1);
+
+
+-- Insertamos una Sesion con fechaHoraFin NULL (sesión activa)
+INSERT INTO sesion (fecha_hora_inicio, fecha_hora_fin, usuario_id) 
+VALUES ('2025-11-12 08:00:00', NULL, 1);
