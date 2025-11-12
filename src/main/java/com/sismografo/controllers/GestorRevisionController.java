@@ -37,14 +37,14 @@ public class GestorRevisionController {
         
     }
 
-    @PatchMapping("/mapa")
+    @PatchMapping("/mapa/{solicitud}")
     public void tomarSolicitud(@PathVariable Boolean solicitud){
         gestorRevisionService.tomarSolicitud(solicitud);
     }
 
-    @PatchMapping("/modificar")
-    public void tomarModificacion(@PathVariable Boolean modificacion){
-        gestorRevisionService.tomarModificacion(modificacion);
+    @PatchMapping("/modificar/{modificacion}")
+    public String[] tomarModificacion(@PathVariable Boolean modificacion){
+        return gestorRevisionService.tomarModificacion(modificacion);
     }
     
     @PatchMapping("/rechazar/{opc}")
