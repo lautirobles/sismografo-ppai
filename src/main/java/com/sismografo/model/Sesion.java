@@ -24,4 +24,9 @@ public class Sesion {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "usuario_id", nullable = false)
     private Usuario usuario;
+
+
+    public Empleado conocerUsuario(){
+        return this.usuario.conocerEmpleado();
+    }
 }

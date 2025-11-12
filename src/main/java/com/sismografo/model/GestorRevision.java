@@ -5,6 +5,7 @@ import java.util.Set;
 
 import org.springframework.stereotype.Component;
 
+import com.sismografo.dto.DatosSismosDto;
 import com.sismografo.dto.EventoSismicoDto;
 
 import java.util.List;
@@ -24,7 +25,7 @@ public class GestorRevision {
 
     private LocalDateTime fechaHoraActual;
 
-    private List<String> datosSismicosEventoSelec;
+    private DatosSismosDto datosSismicosEventoSelec;
 
     private String[] opciones = {"Confirmar", "Rechazar", "Solicitar revision a experto"};
 
@@ -32,7 +33,7 @@ public class GestorRevision {
 
     private String accionSeleccionada;
 
-    private Empleado empleado;
+    private String empleado;
 
     private boolean visualizarMapa;
 
