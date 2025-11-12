@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class Rechazado extends Estado {
 
-
+    
     public Rechazado(String nombre){
         super(nombre);
     }

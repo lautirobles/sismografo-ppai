@@ -9,13 +9,11 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
 
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import com.sismografo.dto.DatosSismosDto;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/revision-manual")
 public class GestorRevisionController {
@@ -39,6 +37,16 @@ public class GestorRevisionController {
         
     }
 
+    @PatchMapping("/mapa/{solicitud}")
+    public void tomarSolicitud(@PathVariable Boolean solicitud){
+        gestorRevisionService.tomarSolicitud(solicitud);
+    }
+
+    @PatchMapping("/modificar/{modificacion}")
+    public String[] tomarModificacion(@PathVariable Boolean modificacion){
+        return gestorRevisionService.tomarModificacion(modificacion);
+    }
+    
     @PatchMapping("/rechazar/{opc}")
     public void rechazarEvento(@PathVariable String opc) {
         gestorRevisionService.tomarAccion(opc);

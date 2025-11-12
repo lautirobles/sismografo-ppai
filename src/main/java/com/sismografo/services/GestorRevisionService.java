@@ -1,7 +1,7 @@
 package com.sismografo.services;
 
-import java.time.LocalDateTime;
-import java.util.Comparator;
+// import java.time.LocalDateTime;
+// import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -14,10 +14,10 @@ import com.sismografo.model.EventoSismico;
 import com.sismografo.model.GestorRevision;
 import com.sismografo.model.Sesion;
 import com.sismografo.repositories.EventoSismicoRepository;
-import com.sismografo.model.Empleado;
-import com.sismografo.services.SesionService;
-import com.sismografo.services.EventoSismicoService;
-import com.sismografo.services.SesionService;
+// import com.sismografo.model.Empleado;
+// import com.sismografo.services.SesionService;
+// import com.sismografo.services.EventoSismicoService;
+// import com.sismografo.services.SesionService;
 import java.util.Optional;
 
 import lombok.*;
@@ -66,7 +66,7 @@ public class GestorRevisionService {
 
     public void tomarSolicitud(boolean solicitud){
         if(solicitud){
-
+            System.out.println("Funcionalidad en construccion! (no)");
         }
 
         habilitarModificacionEvento();
@@ -75,6 +75,14 @@ public class GestorRevisionService {
     public void habilitarModificacionEvento(){
  
         
+    }
+
+    public String[] tomarModificacion(boolean modificacion){
+        if(modificacion){
+            System.out.println("Evento modificado!! (no)");
+        }
+
+        return crearOpciones();
     }
 
     public String[] crearOpciones(){
@@ -91,7 +99,6 @@ public class GestorRevisionService {
         gestor.setEventoSelec(eventoSismicoService.buscarPorId(gestor.getEventoSelec().getId()));
         gestor.actualizarEstado();
         eventoSismicoService.persistirBloqueo(gestor.getEventoSelec(), gestor.getFechaHoraActual());
-       
     }
 
     
