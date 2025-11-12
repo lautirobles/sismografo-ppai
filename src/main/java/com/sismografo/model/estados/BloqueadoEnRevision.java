@@ -18,6 +18,21 @@ public class BloqueadoEnRevision extends Estado {
         super(nombre);
     }
 
+
+    @Override
+    public void confirmarEvento(EventoSismico evento, LocalDateTime fechaHoraFin, Empleado empleado){
+        CambioEstado ceActual = buscarCEActual(evento);
+
+        ceActual.setFechaHoraFin(fechaHoraFin);
+
+        Estado nuevoEstado = crearEstado();
+
+        CambioEstado nuevoCE = crearCE(fechaHoraFin, nuevoEstado, evento, empleado);
+
+        evento.setEstadoActual(nuevoEstado);
+        evento.agregarCambioEstado(nuevoCE);
+    }
+
     @Override
     public void rechazarEvento(EventoSismico evento, LocalDateTime fechaHoraFin, Empleado empleado){
         CambioEstado ceActual = buscarCEActual(evento);
@@ -31,6 +46,20 @@ public class BloqueadoEnRevision extends Estado {
         evento.setEstadoActual(nuevoEstado);
         evento.agregarCambioEstado(nuevoCE);
         
+    }
+
+    @Override
+    public void solicitarRevisionExperto(EventoSismico evento, LocalDateTime fechaHoraFin,Empleado empleado){
+        CambioEstado ceActual = buscarCEActual(evento);
+      
+        ceActual.setFechaHoraFin(fechaHoraFin);
+
+        Estado nuevoEstado = crearEstado();
+
+        CambioEstado nuevoCE = crearCE(fechaHoraFin, nuevoEstado, evento , empleado);
+       
+        evento.setEstadoActual(nuevoEstado);
+        evento.agregarCambioEstado(nuevoCE);
     }
 
     public Estado crearEstado(){

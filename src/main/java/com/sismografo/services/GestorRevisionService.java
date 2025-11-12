@@ -9,15 +9,12 @@ import org.springframework.stereotype.Service;
 
 import com.sismografo.dto.DatosSismosDto;
 import com.sismografo.dto.EventoSismicoDto;
+import com.sismografo.dto.ModificacionDto;
 import com.sismografo.mapper.EventoSismicoMapper; 
 import com.sismografo.model.EventoSismico;
 import com.sismografo.model.GestorRevision;
 import com.sismografo.model.Sesion;
 import com.sismografo.repositories.EventoSismicoRepository;
-// import com.sismografo.model.Empleado;
-// import com.sismografo.services.SesionService;
-// import com.sismografo.services.EventoSismicoService;
-// import com.sismografo.services.SesionService;
 import java.util.Optional;
 
 import lombok.*;
@@ -34,6 +31,9 @@ public class GestorRevisionService {
     private final GestorRevision gestor;
     private final EventoSismicoService eventoSismicoService;
     private final SesionService sesionService;
+    private final AlcanceSismicoService alcanceSismicoService;
+    private final OrigenGeneracionService origenGeneracionService;
+    
     
 
     public List<EventoSismicoDto> buscarEventosNoRevisados(){
@@ -77,11 +77,33 @@ public class GestorRevisionService {
         
     }
 
-    public String[] tomarModificacion(boolean modificacion){
+    public String[] tomarModificacion(boolean modificacion , ModificacionDto eventoDto){
         if(modificacion){
-            System.out.println("Evento modificado!! (no)");
+            EventoSismico eventoExistente = eventoSismicoRepository.findById(eventoDto.getId())
+                .orElseThrow(() -> new RuntimeException("Evento sísmico no encontrado"));
+
+            if (eventoDto.getMagnitud() != null) {
+            eventoExistente.setValorMagnitud(eventoDto.getMagnitud());
+
+            if (eventoDto.getOrigen() != null) {
+            var origen = origenGeneracionService.findByNombre(eventoDto.getOrigen());
+            eventoExistente.setOrigenGeneracion(origen);
         }
 
+        if (eventoDto.getAlcance() != null) {
+            var alcance = alcanceSismicoService.findByNombre(eventoDto.getAlcance());
+            eventoExistente.setAlcanceSismico(alcance);
+        }
+
+        eventoSismicoRepository.save(eventoExistente);
+
+        System.out.println("Evento sísmico actualizado correctamente.");
+        }
+
+
+        }
+
+        
         return crearOpciones();
     }
 
@@ -97,7 +119,7 @@ public class GestorRevisionService {
         sesionOpt.ifPresent(sesion -> gestor.setSesion(sesion));
         gestor.buscarEmpleado();
         gestor.setEventoSelec(eventoSismicoService.buscarPorId(gestor.getEventoSelec().getId()));
-        gestor.actualizarEstado();
+        gestor.actualizarEstado(opc);
         eventoSismicoService.persistirBloqueo(gestor.getEventoSelec(), gestor.getFechaHoraActual());
     }
 
