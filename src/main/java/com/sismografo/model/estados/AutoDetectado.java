@@ -21,10 +21,12 @@ public class AutoDetectado extends Estado {
         CambioEstado ceActual = buscarCEActual(evento);
       
         ceActual.setFechaHoraFin(fechaHoraFin);
-
-        CambioEstado nuevoCE = crearCE(fechaHoraFin, this, evento);
-       
+        
         Estado nuevoEstado = crearEstado();
+
+        CambioEstado nuevoCE = crearCE(fechaHoraFin, nuevoEstado, evento);
+       
+       
 
         evento.setEstadoActual(nuevoEstado);
         evento.agregarCambioEstado(nuevoCE);

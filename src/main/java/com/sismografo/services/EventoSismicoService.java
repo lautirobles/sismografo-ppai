@@ -27,13 +27,7 @@ public class EventoSismicoService {
     private final EstadoService estadoService;
     private final CambioEstadoService cambioEstadoService;
 
-    public DatosSismosDto buscarDatosSismicos(EventoSismico evento){
-        String alcance = evento.getAlcanceSismico().getNombre();
-        String clasificacion = evento.getClasificacionSismo().getNombre();
-        String origen = evento.getOrigenGeneracion().getNombre();
-
-        return new DatosSismosDto(alcance, origen, clasificacion);
-    }
+    
 
 
     public EventoSismico buscarPorId(Long idLong){

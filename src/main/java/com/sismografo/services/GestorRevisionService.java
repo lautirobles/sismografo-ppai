@@ -52,32 +52,20 @@ public class GestorRevisionService {
     }
 
    
-    public void bloquearEvento(Long eventoId){
+    public DatosSismosDto bloquearEvento(Long eventoId){
     
         EventoSismico eventoSelec = eventoSismicoService.buscarPorId(eventoId);
         gestor.tomarSeleccion(eventoSelec);
         gestor.obtenerFechaYHoraActual();
-        System.out.println("Evento seleccionado: ID=" + eventoSelec.getId() + 
-                   ", estado=" + eventoSelec.getEstadoActual().getNombre());
         gestor.bloquearEvSismico();
-        System.out.println("Evento seleccionado: ID=" + eventoSelec.getId() + 
-                   ", estado=" + eventoSelec.getEstadoActual().getNombre());
-
+        gestor.buscarDatosSismicos();
         eventoSismicoService.persistirBloqueo(gestor.getEventoSelec(), gestor.getFechaHoraActual());
+        return gestor.getDatosSismicosEventoSelec();
     }
 
 
-    // metodo que calcula la fecha y hora actual
-    public LocalDateTime obtenerFechaYHoraActual(){
-        return LocalDateTime.now();
-    }
+    
 
-    // Sindevuelve void nunca va mostrar nada
-    public void buscarDatosSismicos(EventoSismico evento){
-        // estos son los 3 datos del sismo que seleccionamos, de aca deberian mostrarse en pantalla al front
-        DatosSismosDto datosSismicos = eventoSismicoService.buscarDatosSismicos(evento);
-        gestor.setDatosSismicosEventoSelec(datosSismicos);
-    }
 
 
     public void habilitarOpcionVisualizarMapa(){
@@ -131,6 +119,19 @@ public class GestorRevisionService {
         LocalDateTime fecha = obtenerFechaYHoraActual();
 
         
+    }
+
+    public LocalDateTime obtenerFechaYHoraActual(){
+        return LocalDateTime.now();
+    }
+
+
+    public void rechazarEvento(Long eventoId){
+        // REVISAR XQ sino lo buscaba de nuevo en la bd se rompia todo si usaba el que tenia guardado
+        gestor.setEventoSelec(eventoSismicoService.buscarPorId(gestor.getEventoSelec().getId()));
+        gestor.actualizarEstado();
+        eventoSismicoService.persistirBloqueo(gestor.getEventoSelec(), gestor.getFechaHoraActual());
+
     }
 
     

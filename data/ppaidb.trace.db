@@ -925,3 +925,11 @@ SELECT *  CAMBIO_ESTADO cb WHERE cb.EVENTO_SISMICO = 1 [42000-232]
 org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "SELECT *  [*]CAMBIO_ESTADO c WHERE c.EVENTO_SISMICO = 1"
 Syntax error in SQL statement "SELECT *  [*]CAMBIO_ESTADO c WHERE c.EVENTO_SISMICO = 1"; SQL statement:
 SELECT *  CAMBIO_ESTADO c WHERE c.EVENTO_SISMICO = 1 [42000-232]
+2025-11-12 14:49:56.049325-03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "INSERT INTO estado (nombre, tipo_estado) VALUES ('AutoDetectado', 'AutoDetectado'), INSERT [*]INTO alcance_sismico (nombre, descripcion) VALUES ('Local', 'Evento detectado en una zona reducida'), ('Regional', 'Evento que abarca una región amplia')"
+Syntax error in SQL statement "INSERT INTO estado (nombre, tipo_estado) VALUES ('AutoDetectado', 'AutoDetectado'), INSERT [*]INTO alcance_sismico (nombre, descripcion) VALUES ('Local', 'Evento detectado en una zona reducida'), ('Regional', 'Evento que abarca una región amplia')"; SQL statement:
+INSERT INTO estado (nombre, tipo_estado) VALUES ('AutoDetectado', 'AutoDetectado'), INSERT INTO alcance_sismico (nombre, descripcion) VALUES ('Local', 'Evento detectado en una zona reducida'), ('Regional', 'Evento que abarca una región amplia') [42000-232]
+2025-11-12 16:28:35.193724-03:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "SELECT * [*]FROMCAMBIO_ESTADO"
+Syntax error in SQL statement "SELECT * [*]FROMCAMBIO_ESTADO"; SQL statement:
+SELECT * FROMCAMBIO_ESTADO [42000-232]

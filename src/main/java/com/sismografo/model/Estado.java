@@ -26,7 +26,7 @@ public abstract class Estado {
         this.nombre = nombre;
     }
 
-    public void rechazarEvento(){
+    public void rechazarEvento(EventoSismico evento, LocalDateTime fechaHoraActual){
         System.out.println("Evento Rechazado en el estado: " + this.nombre);
     }
 

@@ -7,6 +7,7 @@ import org.springframework.stereotype.Component;
 
 import com.sismografo.dto.DatosSismosDto;
 
+
 import java.util.List;
 import lombok.*;
 
@@ -58,6 +59,18 @@ public class GestorRevision {
     this.eventoSelec = evento;
   }
 
+ public void buscarDatosSismicos(){
+        this.datosSismicosEventoSelec = eventoSelec.buscarDatosSismicos();
+  }
 
+  public void actualizarEstado(){
+    obtenerFechaYHoraActual();
+    this.eventoSelec.rechazarEvento(this.fechaHoraActual);
+    
+  }
+
+ 
   
+
+
 }

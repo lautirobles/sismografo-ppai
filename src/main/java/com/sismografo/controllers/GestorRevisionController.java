@@ -12,12 +12,12 @@ import java.util.List;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
-import org.springframework.web.bind.annotation.PostMapping;
+import com.sismografo.dto.DatosSismosDto;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @CrossOrigin(origins = "*")
 @RestController
-@RequestMapping("/gestor-revision")
+@RequestMapping("/revision-manual")
 public class GestorRevisionController {
 
     private final GestorRevisionService gestorRevisionService;
@@ -34,9 +34,15 @@ public class GestorRevisionController {
     }
 
     @PatchMapping("/bloquear/{idEvento}")
-    public String bloquearEvento(@PathVariable Long idEvento) {
-        gestorRevisionService.bloquearEvento(idEvento);
-        return "Evento con ID " + idEvento + " bloqueado correctamente.";
+    public DatosSismosDto bloquearEvento(@PathVariable Long idEvento) {
+        return gestorRevisionService.bloquearEvento(idEvento);
+        
+    }
+
+    @PatchMapping("/rechazar/{idEvento}")
+    public void rechazarEvento(@PathVariable Long idEvento) {
+        gestorRevisionService.rechazarEvento(idEvento);
+        
     }
 
 }

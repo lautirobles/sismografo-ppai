@@ -2,10 +2,8 @@
 -- ESTADOS
 -- ===========================
 INSERT INTO estado (nombre, tipo_estado) VALUES 
-('AutoDetectado', 'AutoDetectado'),
-('BloqueadoEnRevision', 'BloqueadoEnRevision'),
-('Confirmado', 'Confirmado'),
-('Rechazado', 'Rechazado');
+('AutoDetectado', 'AutoDetectado');
+
 
 -- ===========================
 -- ALCANCE SÍSMICO
@@ -77,5 +75,5 @@ INSERT INTO evento_sismico (
 INSERT INTO cambio_estado (fecha_hora_inicio, fecha_hora_fin, estado, evento_sismico)
 VALUES 
 ('2025-11-11T08:00:00', '2025-11-11T08:02:00', 1, 1),
-('2025-11-11T08:02:00', '2025-11-11T08:04:00', 2, 1),
+('2025-11-11T08:02:00', '2025-11-11T08:04:00', 1, 1),
 ('2025-11-11T08:04:00', NULL, 1, 1);

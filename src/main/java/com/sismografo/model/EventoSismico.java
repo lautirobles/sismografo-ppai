@@ -6,6 +6,8 @@ import jakarta.persistence.*;
 import java.math.BigDecimal;
 import java.util.List;
 
+import com.sismografo.dto.DatosSismosDto;
+
 @Entity
 @Table(name = "evento_sismico")
 @Data
@@ -60,7 +62,7 @@ public class EventoSismico {
     @JoinColumn(name = "origen_generacion", referencedColumnName = "id")
     private OrigenGeneracion origenGeneracion;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "eventoSismico")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "eventoSismico",fetch = FetchType.EAGER)
     private List<CambioEstado> cambioEstado;
 
     @ManyToOne(cascade = CascadeType.ALL)
@@ -80,4 +82,18 @@ public class EventoSismico {
     public void bloquearEvSismico(LocalDateTime fechaHoraActual){
         this.estadoActual.bloquearEvento(this, fechaHoraActual);
     }
+
+    public DatosSismosDto buscarDatosSismicos(){
+        String alcance = this.getAlcanceSismico().getNombre();
+        String clasificacion = this.getClasificacionSismo().getNombre();
+        String origen = this.getOrigenGeneracion().getNombre();
+
+        return new DatosSismosDto(alcance, origen, clasificacion);
+    }
+
+    public void rechazarEvento(LocalDateTime fechaHoraActual){
+        this.estadoActual.rechazarEvento(this, fechaHoraActual);
+    }
+
+
 }
