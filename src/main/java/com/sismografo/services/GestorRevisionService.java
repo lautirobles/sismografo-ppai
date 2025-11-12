@@ -37,13 +37,10 @@ public class GestorRevisionService {
     
 
     public List<EventoSismicoDto> buscarEventosNoRevisados(){
-        List<EventoSismico> eventos = eventoSismicoRepository.findAll().stream()
-        .filter(e -> e.esAutoDetectado())
-        .collect(Collectors.toList());
+        List<EventoSismico> eventos = eventoSismicoRepository.findAll();
         gestor.setEventos(eventos);
-
-        gestor.ordenarEventos();
-        return mapper.toDTOList(eventos);
+        gestor.buscarEventosNoRevisados();
+        return mapper.toDTOList(gestor.getEventos());
     }
 
 

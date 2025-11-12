@@ -99,6 +99,14 @@ public class GestorRevision {
   }
 
 
+  public void buscarEventosNoRevisados(){
+    this.eventos = this.eventos.stream().filter(e -> e.esAutoDetectado())
+        .collect(Collectors.toList());
+    
+    this.eventos = ordenarEventos();
+  }
+
+
  
   
 

@@ -11,6 +11,7 @@ INSERT INTO estado (nombre, tipo_estado) VALUES
 INSERT INTO alcance_sismico (nombre, descripcion) VALUES
 ('Local', 'Evento detectado en una zona reducida'),
 ('Regional', 'Evento que abarca una región amplia');
+('Global', 'Evento que abarca una rel mundo');
 
 -- ===========================
 -- CLASIFICACIÓN SÍSMICA
@@ -24,8 +25,9 @@ INSERT INTO clasificacion_sismo (km_profundidad_desde, km_profundidad_hasta, nom
 -- ORIGEN DE GENERACIÓN
 -- ===========================
 INSERT INTO origen_generacion (nombre, descripcion) VALUES
-('Sensor Automático', 'Detectado automáticamente por sensores'),
-('Manual', 'Reportado manualmente por un analista');
+('Tectonico', 'Provocado por placas'),
+('Volcanico', 'Provocado por volcan');
+('Artifical', 'Provocado por ser humano');
 
 -- ===========================
 -- SISMÓGRAFOS
