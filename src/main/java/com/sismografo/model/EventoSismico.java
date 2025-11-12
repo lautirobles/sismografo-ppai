@@ -88,6 +88,8 @@ public class EventoSismico {
         String clasificacion = this.getClasificacionSismo().getNombre();
         String origen = this.getOrigenGeneracion().getNombre();
 
+        var muestras = this.serieTemporal.obtenerMuestras();
+
         return new DatosSismosDto(alcance, origen, clasificacion);
     }
 
@@ -103,4 +105,5 @@ public class EventoSismico {
         this.estadoActual.solicitarRevisionExperto(this, fechaHoraActual, empleado);
     }
 
+    
 }
