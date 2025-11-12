@@ -48,8 +48,8 @@ public class GestorRevisionController {
 }
 
     
-    @PatchMapping("/rechazar/{opc}")
-    public void rechazarEvento(@PathVariable String opc) {
+    @PatchMapping("/accion/{opc}")
+    public void tomarAccion(@PathVariable String opc) {
         gestorRevisionService.tomarAccion(opc);
         
     }

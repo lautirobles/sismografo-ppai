@@ -30,7 +30,7 @@ public abstract class Estado {
         System.out.println("Evento Rechazado en el estado: " + this.nombre);
     }
 
-    public void confirmarEvento(){
+    public void confirmarEvento(EventoSismico evento, LocalDateTime fechaHoraActual,Empleado empleado){
         System.out.println("Evento Confirmado en el estado: " + this.nombre);
     }
 
@@ -58,7 +58,7 @@ public abstract class Estado {
         System.out.println("Evento No revisado en el estado: " + this.nombre);
     }
 
-    public void asignarRevisionExperto(){
+    public void solicitarRevisionExperto(EventoSismico evento, LocalDateTime fechaHoraActual,Empleado empleado){
         System.out.println("Evento Revisado por experto en el estado: " + this.nombre);
     }
 

@@ -119,7 +119,7 @@ public class GestorRevisionService {
         sesionOpt.ifPresent(sesion -> gestor.setSesion(sesion));
         gestor.buscarEmpleado();
         gestor.setEventoSelec(eventoSismicoService.buscarPorId(gestor.getEventoSelec().getId()));
-        gestor.actualizarEstado();
+        gestor.actualizarEstado(opc);
         eventoSismicoService.persistirBloqueo(gestor.getEventoSelec(), gestor.getFechaHoraActual());
     }
 
