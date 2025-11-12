@@ -1,23 +1,27 @@
 package com.sismografo.services;
 
-// import java.time.LocalDateTime;
-
-// import com.sismografo.model.EventoSismico;
-
-// import java.time.LocalDateTime;
-// import java.util.List;
-// import java.util.stream.Collectors;
-
-// import com.sismografo.repositories.EventoSismicoRepository;
-// import lombok.*;
+import org.springframework.stereotype.Service;
 
 
+
+import com.sismografo.dto.DatosSismosDto;
+import com.sismografo.model.EventoSismico;
+
+
+import lombok.*;
+
+
+
+@Service
+@RequiredArgsConstructor
 public class EventoSismicoService {
 
+    public DatosSismosDto buscarDatosSismicos(EventoSismico evento){
+        String alcance = evento.getAlcanceSismico().getNombre();
+        String clasificacion = evento.getClasificacionSismo().getNombre();
+        String origen = evento.getOrigenGeneracion().getNombre();
 
-    // aca deberia delegarle al estado el cambio 
-    // public void bloquearEvSismico(EventoSismico eventoSelec, LocalDateTime fechaHoraActual){
-        
-    // }
+        return new DatosSismosDto(alcance, origen, clasificacion);
+    }
     
 }

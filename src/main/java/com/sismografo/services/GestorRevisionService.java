@@ -23,7 +23,7 @@ public class GestorRevisionService {
     private final EventoSismicoRepository eventoSismicoRepository;
     private final EventoSismicoMapper mapper;
     private final GestorRevision gestor;
-
+    private final EventoSismicoService eventoSismicoService;
     
 
     // CREO que hay que guardar los eventos en el atributo eventos del gestor, no se si hace falta ahora que estamos sacando los datos de la base
@@ -63,6 +63,12 @@ public class GestorRevisionService {
         // llamamos al evento para que delegue en el estado (no se si hacerlo en la clase o el service)
         eventoSelec.bloquearEvSismico(fechaHoraActual);
 
+        // buscamos los datos sismicos del evento
+        buscarDatosSismicos(eventoSelec);
+    }
+
+    public void buscarDatosSismicos(EventoSismico evento){
+        eventoSismicoService.buscarDatosSismicos(evento);
     }
 
 }
