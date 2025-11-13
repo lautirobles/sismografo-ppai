@@ -25,7 +25,7 @@ public class BloqueadoEnRevision extends Estado {
 
         ceActual.setFechaHoraFin(fechaHoraFin);
 
-        Estado nuevoEstado = crearEstado();
+        Estado nuevoEstado = crearEstado("Confirmar");
 
         CambioEstado nuevoCE = crearCE(fechaHoraFin, nuevoEstado, evento, empleado);
 
@@ -39,7 +39,7 @@ public class BloqueadoEnRevision extends Estado {
       
         ceActual.setFechaHoraFin(fechaHoraFin);
 
-        Estado nuevoEstado = crearEstado();
+        Estado nuevoEstado = crearEstado("Rechazar");
 
         CambioEstado nuevoCE = crearCE(fechaHoraFin, nuevoEstado, evento , empleado);
        
@@ -54,7 +54,7 @@ public class BloqueadoEnRevision extends Estado {
       
         ceActual.setFechaHoraFin(fechaHoraFin);
 
-        Estado nuevoEstado = crearEstado();
+        Estado nuevoEstado = crearEstado("Revision");
 
         CambioEstado nuevoCE = crearCE(fechaHoraFin, nuevoEstado, evento , empleado);
        
@@ -62,8 +62,16 @@ public class BloqueadoEnRevision extends Estado {
         evento.agregarCambioEstado(nuevoCE);
     }
 
-    public Estado crearEstado(){
-        return new Rechazado("Rechazado");
+    public Estado crearEstado(String opc){
+
+        if("Confirmar".equals(opc)){
+            return new Confirmado("Confirmado");
+        }else if ("Rechazar".equals(opc)){
+            return new Rechazado("Rechazado");
+        }
+        
+        return new RevisionAExperto("Solicitar revision a experto");
+        
     }
 
 }

@@ -68,11 +68,13 @@ public class GestorRevision {
 
   public void actualizarEstado(String opc){
     obtenerFechaYHoraActual();
-    if(opc == "Confirmar"){
+    System.out.println("la opcion es: " + opc);
+    if("Confirmar".equals(opc)){
       this.eventoSelec.confirmarEvento(this.fechaHoraActual, this.empleado);
-    }else if(opc == "Rechazar"){
+    }else if("Rechazar".equals(opc)){
+      System.out.println("evento rechazadoooo");
       this.eventoSelec.rechazarEvento(this.fechaHoraActual,this.empleado);
-    }else if(opc == "Solicitar revision a experto"){
+    }else if("Solicitar revision a experto".equals(opc)){
       this.eventoSelec.solicitarRevisionExperto(this.fechaHoraActual, this.empleado);
     }
     
